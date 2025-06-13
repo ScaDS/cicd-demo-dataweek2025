@@ -17,6 +17,8 @@ git clone https://github.com/ScaDS/cicd-demo-dataweek2025.git
 - `scripts/` - Utility scripts including test checkers
 - `devops-conda-env.yml` - Conda environment file
 - `pyproject.toml` - Python project and tools configuration
+- `.github/workflows/ci.yml` - CICD configuration for Github Actions in this repository
+- `gitlab-ci.yml` - CICD configuration equivalent for Gitlab
 
 ## Local Development Setup
 
