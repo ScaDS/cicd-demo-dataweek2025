@@ -1,0 +1,37 @@
+image: continuumio/miniconda3:latest
+
+stages:
+  - lint
+  - test
+  - deploy
+
+variables:
+  CONDA_ENV: dataweek-devops-env
+
+before_script:
+  - conda env create -f devops-conda-env.yml
+  - source activate $CONDA_ENV
+
+linting:
+  stage: lint
+  tags:
+    - gpu-pc
+  script:
+    - conda run -n $CONDA_ENV ruff check
+
+tests:
+  stage: test
+  tags:
+    - gpu-pc
+  needs: ["linting"]
+  script:
+    - conda run -n $CONDA_ENV python scripts/check_tests.py
+    - conda run -n $CONDA_ENV pytest tests
+
+deploy-app:
+  stage: deploy
+  tags:
+    - gpu-pc
+  needs: ["tests"]
+  script:
+    - echo "Run deployment to remote server"
