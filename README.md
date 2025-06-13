@@ -71,3 +71,7 @@ Before submitting changes, complete these mandatory testing steps locally:
 1. Create a new branch for your feature
 2. Follow the local testing requirements above
 3. Submit a pull request with your changes
+
+## Zenodo Link for Slides
+
+https://zenodo.org/records/15654889
